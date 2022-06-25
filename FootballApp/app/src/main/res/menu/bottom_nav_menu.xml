@@ -8,7 +8,7 @@
         android:id="@+id/home"
         android:title=""/>
     <item
-        android:id="@+id/RightNav"
+        android:id="@+id/rightNav"
         android:icon="@drawable/ic_baseline_menu_24"
         android:title="Menu"/>
 </menu>
