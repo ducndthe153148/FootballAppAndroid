@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/trung duc/FootballAppAndroid/FootballApp/app/src/main/res/drawable-v24/bottom_shadow.xml" value="0.1075" />
+        <entry key="..\:/Users/trung duc/FootballAppAndroid/FootballApp/app/src/main/res/drawable-v24/ic_date.xml" value="0.1075" />
+        <entry key="..\:/Users/trung duc/FootballAppAndroid/FootballApp/app/src/main/res/drawable-v24/round_white.xml" value="0.1075" />
+        <entry key="..\:/Users/trung duc/FootballAppAndroid/FootballApp/app/src/main/res/drawable-v24/top_shadow.xml" value="0.1075" />
         <entry key="..\:/Users/trung duc/FootballAppAndroid/FootballApp/app/src/main/res/drawable/transparent_background.xml" value="0.1455" />
-        <entry key="..\:/Users/trung duc/FootballAppAndroid/FootballApp/app/src/main/res/layout/activity_left_news.xml" value="0.22135416666666666" />
-        <entry key="..\:/Users/trung duc/FootballAppAndroid/FootballApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/trung duc/FootballAppAndroid/FootballApp/app/src/main/res/layout/activity_left_news.xml" value="0.1" />
+        <entry key="..\:/Users/trung duc/FootballAppAndroid/FootballApp/app/src/main/res/layout/activity_main.xml" value="0.165" />
+        <entry key="..\:/Users/trung duc/FootballAppAndroid/FootballApp/app/src/main/res/layout/football_card_item.xml" value="0.16983695652173914" />
+        <entry key="..\:/Users/trung duc/FootballAppAndroid/FootballApp/app/src/main/res/layout/news_card_detail.xml" value="0.16983695652173914" />
         <entry key="..\:/Users/trung duc/FootballAppAndroid/FootballApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22135416666666666" />
       </map>
     </option>
