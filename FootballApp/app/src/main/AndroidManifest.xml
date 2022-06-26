@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FootballApp">
         <activity
+            android:name=".LeftNews"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
