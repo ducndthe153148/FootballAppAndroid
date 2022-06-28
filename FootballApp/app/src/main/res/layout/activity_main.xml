@@ -35,6 +35,6 @@
         android:id="@+id/btn_leftNAv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="News Nav" />
+        android:text="News" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
