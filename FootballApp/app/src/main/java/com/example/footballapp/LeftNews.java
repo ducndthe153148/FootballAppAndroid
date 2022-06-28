@@ -1,5 +1,7 @@
 package com.example.footballapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +10,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -68,6 +71,20 @@ public class LeftNews extends AppCompatActivity implements SwipeRefreshLayout.On
         errorTitle = findViewById(R.id.errorTitle);
         errorMessage = findViewById(R.id.errorMessage);
         btnRetry = findViewById(R.id.btn_retry);
+
+        // calling action bar to return home (none custome)
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void LoadJson(final String category, String keyword) {
@@ -147,24 +164,24 @@ public class LeftNews extends AppCompatActivity implements SwipeRefreshLayout.On
 
     private void initListener() {
 
-//        adapter.setOnItemClickListener(new Adapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int position) {
-//                ImageView imageView = view.findViewById(R.id.img);
-//                Intent intent = new Intent(MainActivity.this, FootballNewsDetail.class);
-//
-//                ArticlesItem article = articles.get(position);
-//                intent.putExtra("url", article.getUrl());
-//                intent.putExtra("title", article.getTitle());
-//                intent.putExtra("img", article.getUrlToImage());
-//                intent.putExtra("date", article.getPublishedAt());
-//                intent.putExtra("source", article.getSource().getName());
-//                intent.putExtra("author", article.getAuthor());
-//
-//                startActivity(intent);
-//
-//            }
-//        });
+        adapter.setOnItemClickListener(new Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                ImageView imageView = view.findViewById(R.id.img);
+                Intent intent = new Intent(LeftNews.this, FootballNewsDetail.class);
+
+                ArticlesItem article = articles.get(position);
+                intent.putExtra("url", article.getUrl());
+                intent.putExtra("title", article.getTitle());
+                intent.putExtra("img", article.getUrlToImage());
+                intent.putExtra("date", article.getPublishedAt());
+                intent.putExtra("source", article.getSource().getName());
+                intent.putExtra("author", article.getAuthor());
+
+                startActivity(intent);
+
+            }
+        });
     }
 
     @Override
@@ -172,6 +189,12 @@ public class LeftNews extends AppCompatActivity implements SwipeRefreshLayout.On
 
         LoadJson("sports","football");
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        supportFinishAfterTransition();
     }
 
     private void onLoadingSwipeRefresh(final String category, final String keyword) {

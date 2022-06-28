@@ -90,6 +90,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         return articles.size();
     }
 
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = (AdapterView.OnItemClickListener) onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView title, desc, author, published_at, source, time;
@@ -114,8 +122,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         }
 
         @Override
-        public void onClick(View v) {
-//            onItemClickListener.onItemClick(v,getAdapterPosition());
+        public void onClick(View view) {
+            onItemClickListener.onItemClick(null,view, getAdapterPosition(),0);
         }
     }
 }
