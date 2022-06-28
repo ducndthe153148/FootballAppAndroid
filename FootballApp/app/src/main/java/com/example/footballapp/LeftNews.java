@@ -72,10 +72,15 @@ public class LeftNews extends AppCompatActivity implements SwipeRefreshLayout.On
         errorMessage = findViewById(R.id.errorMessage);
         btnRetry = findViewById(R.id.btn_retry);
 
-        // calling action bar to return home (none custome)
+        // calling the action bar
         ActionBar actionBar = getSupportActionBar();
+
+        // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
+
+    // this event will enable the back
+    // function to the button on press
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
