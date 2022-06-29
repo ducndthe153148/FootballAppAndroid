@@ -37,8 +37,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 startActivity(intent);
                 return true;
             case R.id.rightNav:
+                // Use to show navigation drawer
                 return true;
             case R.id.home:
+                // Don't need to use this
                 return true;
         }
         return false;
