@@ -33,7 +33,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     private List<ArticlesItem> articles;
     private Context context;
-    private AdapterView.OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
 
     public Adapter(List<ArticlesItem> articles, Context context) {
         this.articles = articles;
@@ -42,9 +42,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     @NonNull
     @Override
-    public Adapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.football_card_item, parent, false);
-        return new MyViewHolder(view, onItemClickListener);
+        return new MyViewHolder(view, (OnItemClickListener) onItemClickListener);
     }
 
     @Override
@@ -90,14 +90,22 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         return articles.size();
     }
 
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView title, desc, author, published_at, source, time;
         ImageView imageView;
         ProgressBar progressBar;
-        AdapterView.OnItemClickListener onItemClickListener;
+        OnItemClickListener onItemClickListener;
 
-        public MyViewHolder(@NonNull View itemView, AdapterView.OnItemClickListener onItemClickListener) {
+        public MyViewHolder(@NonNull View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
 
             itemView.setOnClickListener(this);
@@ -115,7 +123,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
         @Override
         public void onClick(View v) {
-//            onItemClickListener.onItemClick(v,getAdapterPosition());
+            onItemClickListener.onItemClick(v,getAdapterPosition());
         }
     }
 }
