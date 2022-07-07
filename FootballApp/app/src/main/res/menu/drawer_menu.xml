@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+
+            android:title="Hồ sơ của tôi" />
+        <item
+            android:id="@+id/nav_favourite"
+
+            android:title="Yêu thích" />
+        <item
+            android:id="@+id/nav_tournament"
+
+            android:title="Giải đấu" />
+        <item
+            android:id="@+id/nav_setting"
+
+            android:title="Cài đặt" />
+    </group>
+
+        <group>
+            <item
+                android:title="Football App là gì" />
+
+            <item
+                android:title="Chính sách bảo mật" />
+
+            <item
+                android:title="Điều khoản sử dụng" />
+
+            <item
+                android:title="Liên hệ" />
+        </group>
+
+
+</menu>
