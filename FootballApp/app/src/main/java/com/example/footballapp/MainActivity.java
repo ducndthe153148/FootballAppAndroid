@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 } else{
                     NavigationDrawer.OpenDrawer();
                 }
-
                 return true;
             case R.id.home:
+                // Don't need to use this
                 return true;
         }
         return false;
