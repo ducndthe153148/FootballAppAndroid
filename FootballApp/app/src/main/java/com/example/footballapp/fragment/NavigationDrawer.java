@@ -91,7 +91,9 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
 
         NavigationView navigationView = view.findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
-        ((MainActivity)getActivity()).getSupportActionBar().hide();
+
+        // Temp fix
+        //((MainActivity)getActivity()).getSupportActionBar().hide();
     }
 
     public static boolean isOpen(){
