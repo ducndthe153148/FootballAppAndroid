@@ -6,6 +6,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +16,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.footballapp.adapter.MatchAdapter;
 import com.example.footballapp.api.ApiClient;
 import com.example.footballapp.api.ApiInterface;
 import com.example.footballapp.fragment.NavigationDrawer;
@@ -36,11 +41,16 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private List<MatchItem> matchs = new ArrayList<>();
+    private MatchAdapter matchAdapter;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+
     BottomAppBar bar;
     BottomNavigationView bottomNavigationView;
     View view;
     NavigationDrawer navigationDrawer;
     TextView leagueName, fr_teamName, second_teamName, time_value2, detail_button;
+    ImageView fr_teamImage, second_teamImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +105,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         second_teamName = findViewById(R.id.second_teamName);
         time_value2 = findViewById(R.id.time_value2);
         detail_button = findViewById(R.id.detail_button);
+        fr_teamImage = findViewById(R.id.fr_teamImage);
+        second_teamImage = findViewById(R.id.second_teamImage);
+
+        recyclerView = findViewById(R.id.recViewMatch);
+        layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL,false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setNestedScrollingEnabled(false);
     }
 
     public void LoadFirstMatchJSon(){
@@ -123,7 +141,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             public void onResponse(Call<MatchResponses> call, Response<MatchResponses> response) {
                 if(response.isSuccessful()){
                     matchs = response.body().getMatches();
-                    Toast.makeText(MainActivity.this,"Get data: " +matchs.toString(), Toast.LENGTH_LONG).show();
+                    matchAdapter = new MatchAdapter(matchs,MainActivity.this);
+                    recyclerView.setAdapter(matchAdapter);
+                    //Toast.makeText(MainActivity.this,"Get data: " +matchs.toString(), Toast.LENGTH_LONG).show();
                 }
             }
 

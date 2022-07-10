@@ -8,7 +8,7 @@ public class MatchItem {
     private Teams team_football_1;
 
     @SerializedName("away_team")
-    private Teams team_football_;
+    private Teams team_football_2;
 
     @SerializedName("match_stadium")
     private String team_stadium;
@@ -24,7 +24,7 @@ public class MatchItem {
 
     public MatchItem(Teams team_football_1, Teams team_football_, String team_stadium, String time_start, String image_back) {
         this.team_football_1 = team_football_1;
-        this.team_football_ = team_football_;
+        this.team_football_2 = team_football_;
         this.team_stadium = team_stadium;
         this.time_start = time_start;
         this.image_back = image_back;
@@ -38,12 +38,12 @@ public class MatchItem {
         this.team_football_1 = team_football_1;
     }
 
-    public Teams getTeam_football_() {
-        return team_football_;
+    public Teams getTeam_football_2() {
+        return team_football_2;
     }
 
-    public void setTeam_football_(Teams team_football_) {
-        this.team_football_ = team_football_;
+    public void setTeam_football_2(Teams team_football_) {
+        this.team_football_2 = team_football_;
     }
 
     public String getTeam_stadium() {
