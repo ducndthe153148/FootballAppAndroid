@@ -13,27 +13,42 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.footballapp.api.ApiClient;
+import com.example.footballapp.api.ApiInterface;
 import com.example.footballapp.fragment.NavigationDrawer;
+import com.example.footballapp.models.ArticlesItem;
+import com.example.footballapp.models.MatchItem;
+import com.example.footballapp.models.MatchResponses;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.Console;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-    Button btn_leftNav;
+
+    private List<MatchItem> matchs = new ArrayList<>();
     BottomAppBar bar;
     BottomNavigationView bottomNavigationView;
     View view;
     NavigationDrawer navigationDrawer;
+    TextView leagueName, fr_teamName, second_teamName, time_value2, detail_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        preCreate();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         replaceFragment(new NavigationDrawer());
-
+        LoadAllMatchJSon();
     }
 
     @Override
@@ -71,5 +86,51 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         } else{
             super.onBackPressed();
         }
+    }
+
+    private void preCreate(){
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        leagueName = findViewById(R.id.leagueName);
+        fr_teamName = findViewById(R.id.fr_teamName);
+        second_teamName = findViewById(R.id.second_teamName);
+        time_value2 = findViewById(R.id.time_value2);
+        detail_button = findViewById(R.id.detail_button);
+    }
+
+    public void LoadFirstMatchJSon(){
+        ApiInterface apiInterface = ApiClient.getApiMatch().create(ApiInterface.class);
+        Call<MatchItem> call;
+        call = apiInterface.getLatestMatch();
+        call.enqueue(new Callback<MatchItem>() {
+            @Override
+            public void onResponse(Call<MatchItem> call, Response<MatchItem> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<MatchItem> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Fail to get the data..", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void LoadAllMatchJSon(){
+        ApiInterface apiInterface = ApiClient.getApiMatch().create(ApiInterface.class);
+        Call<MatchResponses> call;
+        call = apiInterface.getFullMatch();
+        call.enqueue(new Callback<MatchResponses>() {
+            @Override
+            public void onResponse(Call<MatchResponses> call, Response<MatchResponses> response) {
+                if(response.isSuccessful()){
+                    matchs = response.body().getMatches();
+                    Toast.makeText(MainActivity.this,"Get data: " +matchs.toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MatchResponses> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Fail to get the data..", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

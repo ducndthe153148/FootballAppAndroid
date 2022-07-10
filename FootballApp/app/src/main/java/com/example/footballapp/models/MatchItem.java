@@ -4,16 +4,16 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class MatchItem {
-    @SerializedName("team_football_1")
+    @SerializedName("home_team")
     private Teams team_football_1;
 
-    @SerializedName("team_football_2")
+    @SerializedName("away_team")
     private Teams team_football_;
 
-    @SerializedName("team_stadium")
+    @SerializedName("match_stadium")
     private String team_stadium;
 
-    @SerializedName("time_start")
+    @SerializedName("match_time")
     private String time_start;
 
     @SerializedName("image_back")
