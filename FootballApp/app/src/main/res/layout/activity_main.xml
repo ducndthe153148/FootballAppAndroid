@@ -169,14 +169,13 @@
                 android:id="@+id/recViewMatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
+                android:scrollbars="horizontal">
             </androidx.recyclerview.widget.RecyclerView>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recClub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:scrollbars="vertical">
 
             </androidx.recyclerview.widget.RecyclerView>
