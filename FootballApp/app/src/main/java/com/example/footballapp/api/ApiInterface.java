@@ -1,8 +1,10 @@
 package com.example.footballapp.api;
 
+import com.example.footballapp.models.ClubResponses;
 import com.example.footballapp.models.MatchItem;
 import com.example.footballapp.models.MatchResponses;
 import com.example.footballapp.models.Responses;
+import com.example.footballapp.models.SeasonResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -16,11 +18,16 @@ public interface ApiInterface {
             @Query("apiKey") String apiKey
     );
 
-    @GET("7b2b57cb-0f64-4680-89df-06b39730d506?fbclid=IwAR27Lt1RkEOtXVUF2IWRxgg2V7FwTtTJXbUmDqnZwbXbNtumMpMEXsVTZ80")
+    @GET("bd1b18c7-7234-44b3-bf2e-eccfcaa3b588")
     Call<MatchResponses> getFullMatch();
 
-    @GET("7b2b57cb-0f64-4680-89df-06b39730d506?fbclid=IwAR27Lt1RkEOtXVUF2IWRxgg2V7FwTtTJXbUmDqnZwbXbNtumMpMEXsVTZ80")
+    @GET("5a0b5c45-a49d-4f52-b40f-d2f60f6f8500")
     Call<MatchItem> getLatestMatch();
+
+    @GET("18334")
+    Call<SeasonResponse> getClub(
+            @Query("api_token") String apiKey
+    );
 
     @GET("top-headlines")
     Call<Responses> getNewsSearch(

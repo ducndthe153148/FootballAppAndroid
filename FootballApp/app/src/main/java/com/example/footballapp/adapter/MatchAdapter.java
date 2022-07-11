@@ -93,6 +93,5 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.MyViewHolder
             fr_teamImage = itemView.findViewById(R.id.fr_teamImage);
             second_teamImage = itemView.findViewById(R.id.second_teamImage);
         }
-
     }
 }
