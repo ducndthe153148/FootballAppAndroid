@@ -16,7 +16,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
     public static final String BASE_URL = "https://newsapi.org/v2/";
+    public static final String MATCH_URL = "https://mocki.io/v1/";
+    public static final String CLUB_URL = "https://soccer.sportmonks.com/api/v2.0/standings/season/";
     public static Retrofit retrofit;
+    public static Retrofit retrofitMatch;
 
     public static Retrofit getApiClient(){
 
@@ -28,6 +31,28 @@ public class ApiClient {
         }
 
         return retrofit;
+    }
+
+    public static Retrofit getApiMatch(){
+        if (retrofitMatch == null) {
+            retrofitMatch = new Retrofit.Builder().baseUrl(MATCH_URL)
+                    .client(getUnsafeOkHttpClient().build())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+
+        return retrofitMatch;
+    }
+
+    public static Retrofit getApiClub(){
+        if (retrofitMatch == null) {
+            retrofitMatch = new Retrofit.Builder().baseUrl(CLUB_URL)
+                    .client(getUnsafeOkHttpClient().build())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+
+        return retrofitMatch;
     }
 
     public static OkHttpClient.Builder getUnsafeOkHttpClient() {
