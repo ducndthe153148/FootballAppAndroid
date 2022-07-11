@@ -1,6 +1,7 @@
 package com.example.footballapp.api;
 
 import com.example.footballapp.models.ClubResponses;
+import com.example.footballapp.models.ClubScore;
 import com.example.footballapp.models.MatchItem;
 import com.example.footballapp.models.MatchResponses;
 import com.example.footballapp.models.Responses;
@@ -24,10 +25,8 @@ public interface ApiInterface {
     @GET("5a0b5c45-a49d-4f52-b40f-d2f60f6f8500")
     Call<MatchItem> getLatestMatch();
 
-    @GET("18334")
-    Call<SeasonResponse> getClub(
-            @Query("api_token") String apiKey
-    );
+    @GET("ffef36cc-3c06-4034-a6f4-8fa8676bb59c")
+    Call<ClubResponses> getClub();
 
     @GET("top-headlines")
     Call<Responses> getNewsSearch(

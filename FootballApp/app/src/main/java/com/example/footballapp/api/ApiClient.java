@@ -46,7 +46,7 @@ public class ApiClient {
 
     public static Retrofit getApiClub(){
         if (retrofitMatch == null) {
-            retrofitMatch = new Retrofit.Builder().baseUrl(CLUB_URL)
+            retrofitMatch = new Retrofit.Builder().baseUrl(MATCH_URL)
                     .client(getUnsafeOkHttpClient().build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();

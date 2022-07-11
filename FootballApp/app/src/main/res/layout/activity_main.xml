@@ -231,18 +231,19 @@
                 android:text="Thứ hạng của đội"
                 android:textColor="#ffffff"
                 android:gravity="center"/>
+
             <TextView
                 android:id="@+id/p_title"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="80dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/team_name"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textSize="12sp"
+                android:layout_marginStart="79dp"
+                android:gravity="center"
                 android:text="P"
                 android:textColor="#ffffff"
-                android:gravity="center"/>
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/team_name"
+                app:layout_constraintTop_toTopOf="parent" />
             <TextView
                 android:id="@+id/w_title"
                 android:layout_width="wrap_content"

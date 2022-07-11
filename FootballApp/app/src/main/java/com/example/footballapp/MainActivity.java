@@ -25,6 +25,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.footballapp.adapter.ClubAdapter;
 import com.example.footballapp.adapter.MatchAdapter;
 import com.example.footballapp.api.ApiClient;
 import com.example.footballapp.api.ApiInterface;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private List<MatchItem> matchs = new ArrayList<>();
     public List<ClubScore> clubs = new ArrayList<>();
     private MatchAdapter matchAdapter;
+    private ClubAdapter clubAdapter;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView clubView;
@@ -229,14 +231,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     public void LoadPublicJSon(){
         ApiInterface apiInterface = ApiClient.getApiClub().create(ApiInterface.class);
-        Call<SeasonResponse> call;
-        call = apiInterface.getClub(apiToken);
-        call.enqueue(new Callback<SeasonResponse>() {
+        Call<ClubResponses> call;
+        call = apiInterface.getClub();
+        call.enqueue(new Callback<ClubResponses>() {
             @Override
-            public void onResponse(Call<SeasonResponse> call, Response<SeasonResponse> response) {
+            public void onResponse(Call<ClubResponses> call, Response<ClubResponses> response) {
                 if(response.isSuccessful()){
-                    clubs = response.body().getList().get(0).getStandings().getData().getClubScores();
-                    Toast.makeText(MainActivity.this, "Get data: " +clubs.get(0).getTeam_name(), Toast.LENGTH_LONG).show();
+                    clubs = response.body().getClubScores();
+                    clubAdapter = new ClubAdapter(clubs, MainActivity.this);
+                    clubView.setAdapter(clubAdapter);
+                    //Toast.makeText(MainActivity.this, "Get data: " +clubs.get(0).getTeam_name(), Toast.LENGTH_LONG).show();
                 } else {
                     String errorCode;
                     switch (response.code()) {
@@ -257,7 +261,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
 
             @Override
-            public void onFailure(Call<SeasonResponse> call, Throwable t) {
+            public void onFailure(Call<ClubResponses> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Fail to get the data public..", Toast.LENGTH_LONG).show();
             }
         });

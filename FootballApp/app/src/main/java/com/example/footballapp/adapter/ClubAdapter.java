@@ -39,19 +39,19 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.MyViewHolder>{
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
         final ClubAdapter.MyViewHolder holder = myViewHolder;
         ClubScore model = scoreItems.get(position);
-        holder.id_no.setText(model.getPosition());
+        holder.id_no.setText(Integer.toString(model.getPosition()));
         holder.team_name.setText(model.getTeam_name());
-        holder.p_title.setText(model.getScoreItem().getGames_played());
-        holder.w_title.setText(model.getScoreItem().getWon());
-        holder.d_title.setText(model.getScoreItem().getDraw());
-        holder.l_title.setText(model.getScoreItem().getLost());
+        holder.p_title.setText(Integer.toString(model.getScoreItem().getGames_played()));
+        holder.w_title.setText(Integer.toString(model.getScoreItem().getWon()));
+        holder.d_title.setText(Integer.toString(model.getScoreItem().getDraw()));
+        holder.l_title.setText(Integer.toString(model.getScoreItem().getLost()));
 
         int txtGoals = model.getScoreItem().getGoals_scored();
         int txtAgains = model.getScoreItem().getGoals_against();
         String txt = Integer.toString(txtGoals) + " : " + Integer.toString(txtAgains);
         holder.goals_title.setText(txt);
 
-        holder.pts_title.setText(model.getScoreItem().getPoints());
+        holder.pts_title.setText(Integer.toString(model.getScoreItem().getPoints()));
     }
 
     @Override
