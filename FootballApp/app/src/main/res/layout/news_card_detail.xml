@@ -130,16 +130,16 @@
                     android:paddingRight="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:id="@+id/title"
-                        android:textColor="@color/colorTextTitle"
-                        android:textStyle="bold"
-                        android:fontFamily="sans-serif-light"
-                        android:textSize="19sp"
-                        android:text="Title of News"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        />
+                        android:fontFamily="sans-serif-light"
+                        android:text="Title of News"
+                        android:textColor="@color/colorTextTitle"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/time"
