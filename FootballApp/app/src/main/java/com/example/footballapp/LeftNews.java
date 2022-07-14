@@ -122,7 +122,6 @@ public class LeftNews extends AppCompatActivity implements SwipeRefreshLayout.On
 
                     topHeadline.setVisibility(View.VISIBLE);
                     swipeRefreshLayout.setRefreshing(false);
-
                 } else {
                     topHeadline.setVisibility(View.INVISIBLE);
                     swipeRefreshLayout.setRefreshing(false);
