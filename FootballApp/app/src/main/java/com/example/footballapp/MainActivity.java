@@ -120,6 +120,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public void onBackPressed() {
         if(NavigationDrawer.isOpen()){
             NavigationDrawer.CloseDrawer();
+        }else if(findViewById(R.id.webView).isShown()){
+            findViewById(R.id.webView).setVisibility(View.GONE);
         } else{
             super.onBackPressed();
         }
