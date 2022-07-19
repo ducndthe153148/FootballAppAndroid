@@ -1,12 +1,12 @@
 package com.example.footballapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
@@ -16,9 +16,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.footballapp.ChangePassword;
+import com.example.footballapp.LoginActivity;
 import com.example.footballapp.MainActivity;
+import com.example.footballapp.ProfileActivity;
 import com.example.footballapp.R;
+import com.example.footballapp.WebViewActivity;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +32,7 @@ import com.google.android.material.navigation.NavigationView;
  */
 public class NavigationDrawer extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
     private static DrawerLayout drawerLayout;
-
+    //private static WebViewActivity webView;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -78,10 +83,8 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         drawerLayout = view.findViewById(R.id.drawer_layout);
         Toolbar toolbar = view.findViewById(R.id.toolbar);
-
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(((MainActivity)getActivity()), drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -94,6 +97,7 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
 
         // Temp fix
         //((MainActivity)getActivity()).getSupportActionBar().hide();
+        view.findViewById(R.id.webView);
     }
 
     public static boolean isOpen(){
@@ -110,6 +114,36 @@ public class NavigationDrawer extends Fragment implements NavigationView.OnNavig
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+        if(id == R.id.nav_profile){
+            startActivity(new Intent(getActivity(), ProfileActivity.class));
+        }else if (id == R.id.nav_setting){
+            startActivity(new Intent(getActivity(), ChangePassword.class));
+        }else if (id == R.id.nav_logout){
+            // Code for sign out
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+        }else if(id == R.id.nav_ball){
+            Intent myIntent = new Intent(getActivity(), WebViewActivity.class);
+            myIntent.putExtra("url", "https://he141110-trantuananh.github.io/Android-webview/footballApp.html");
+            startActivity(myIntent);
+        }else if(id == R.id.nav_policy){
+            Intent myIntent = new Intent(getActivity(), WebViewActivity.class);
+            myIntent.putExtra("url", "https://he141110-trantuananh.github.io/Android-webview/policy.html");
+            startActivity(myIntent);
+        }else if(id == R.id.nav_term_of_use){
+            Intent myIntent = new Intent(getActivity(), WebViewActivity.class);
+            myIntent.putExtra("url", "https://he141110-trantuananh.github.io/Android-webview/termOfUse.html");
+            startActivity(myIntent);
+        }else{
+            Intent myIntent = new Intent(getActivity(), WebViewActivity.class);
+            myIntent.putExtra("url", "https://he141110-trantuananh.github.io/Android-webview/contact.html");
+            startActivity(myIntent);
+        }
+
         return false;
     }
+
+
 }

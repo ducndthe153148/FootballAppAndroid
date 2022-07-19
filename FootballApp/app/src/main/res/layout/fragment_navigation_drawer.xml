@@ -22,5 +22,4 @@
         android:layout_gravity="right"
         app:headerLayout="@layout/header"
         app:menu="@menu/drawer_menu" />
-
 </androidx.drawerlayout.widget.DrawerLayout>
