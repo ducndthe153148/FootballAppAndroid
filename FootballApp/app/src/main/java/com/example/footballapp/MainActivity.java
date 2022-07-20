@@ -86,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 .setTopRightCorner(CornerFamily.ROUNDED,180f)
                 .build());
         LoadPublicJSon();
+
+        findViewById(R.id.content_frame).setVisibility(View.GONE);
     }
 
     @Override
@@ -97,10 +99,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 startActivity(intent);
                 return true;
             case R.id.rightNav:
+                findViewById(R.id.content_frame).setVisibility(View.VISIBLE);
                 if(NavigationDrawer.isOpen()){
                     NavigationDrawer.CloseDrawer();
+                    findViewById(R.id.content_frame).setVisibility(View.GONE);
                 } else{
                     NavigationDrawer.OpenDrawer();
+                    findViewById(R.id.content_frame).setVisibility(View.VISIBLE);
                 }
                 return true;
             case R.id.home:

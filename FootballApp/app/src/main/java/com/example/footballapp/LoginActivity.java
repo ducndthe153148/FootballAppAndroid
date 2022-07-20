@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         progressBar = findViewById(R.id.progessBar);
         mAuth = FirebaseAuth.getInstance();
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
     }
 
