@@ -77,7 +77,7 @@ public class LeftNews extends AppCompatActivity implements SwipeRefreshLayout.On
 
         // showing the back button in action bar
         //Temp
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        //actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     // this event will enable the back
